@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Silex App{% endblock %}</title>
+
+        {% if app.env != 'prod' %}
+            <meta name="robots" content="noindex">
+        {% endif %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="css/main.css" />
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>
+
+            {% if app.env == 'prod' %}
+                <script>
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                    ga('create', '{{ app.config.google_analytics.user_account }}', '{{ app.config.google_analytics.domain }}');
+                    ga('send', 'pageview');
+                </script>
+            {% endif %}
+
+        {% endblock %}
+    </body>
+</html>

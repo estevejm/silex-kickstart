@@ -1,0 +1,29 @@
+prod: &prod
+    debug: false
+
+    db:
+        host:     silex-app.com
+        dbname:   silex-app
+        username: silex-app
+        password: silex-app
+
+    social:
+        facebook: https://www.facebook.com/
+        twitter:  https://twitter.com/
+
+    google_analytics:
+        user_account: silex-app
+        domain:       silex-app.com
+
+test: &test
+    <<: *prod
+    debug: false
+
+dev:
+    <<: *test
+
+    db:
+        host:     localhost
+        dbname:   silex-app
+        username: silex-app
+        password: silex-app
